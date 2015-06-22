@@ -22,7 +22,7 @@ outputFileName = trackingParameters.outputFileName;
 
 %first and last frames to write
 firstFrame = 1;
-lastFrame = 10;
+lastFrame = 30;
 
 %read input video
 vidIn = VideoReader([inputPath '/' inputFileName]);

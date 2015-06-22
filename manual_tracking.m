@@ -34,6 +34,7 @@ figure;
 for ii=firstFrame:lastFrame
     imgIn = read(vidIn,ii);
     imshow(imgIn);
+    title(['Frame number ' sprintf('%d',ii)]);
     %click on a point
     [ptX,ptY] = getpts();
     ptIn = [ptX(1) ptY(1)];
