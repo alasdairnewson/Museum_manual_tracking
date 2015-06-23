@@ -19,7 +19,7 @@ outputFilePath = trackingParameters.outputFilePath;
 outputFileName = trackingParameters.outputFileName;
 
 %read input video
-vidIn = VideoReader([inputPath '/' inputFileName]);
+vidIn = read_video([inputPath '/' inputFileName]);
 nbFrames = get(vidIn,'NumberOfFrames');
 [~,fileNoExt,~] = fileparts(inputFileName);
 
@@ -29,9 +29,10 @@ nbFrames = get(vidIn,'NumberOfFrames');
 
 firstFrame = 1;
 lastFrame = nbFrames;
+skipFrames = 15;
 
 figure;
-for ii=firstFrame:lastFrame
+for ii=firstFrame:skipFrames:lastFrame
     imgIn = read(vidIn,ii);
     imshow(imgIn);
     title(['Frame number ' sprintf('%d',ii)]);

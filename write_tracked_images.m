@@ -23,10 +23,10 @@ outputFileName = trackingParameters.outputFileName;
 
 %first and last frames to write
 firstFrame = 1;
-lastFrame = 10;
+lastFrame = 20;
 
 %read input video
-vidIn = VideoReader([inputPath '/' inputFileName]);
+vidIn = read_video([inputPath '/' inputFileName]);
 nbFrames = get(vidIn,'NumberOfFrames');
 [~,fileNoExt,~] = fileparts(inputFileName);
 
