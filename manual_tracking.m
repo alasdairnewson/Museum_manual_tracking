@@ -1,5 +1,4 @@
 
-
 close all;
 clear all;
 restoredefaultpath;
@@ -28,8 +27,8 @@ nbFrames = get(vidIn,'NumberOfFrames');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 firstFrame = 1;
-lastFrame = nbFrames;
-skipFrames = 15;
+lastFrame = 50;
+skipFrames = 1;%trackingParameters.skipFrames;
 
 figure;
 for ii=firstFrame:skipFrames:lastFrame
@@ -40,6 +39,11 @@ for ii=firstFrame:skipFrames:lastFrame
     [ptX,ptY] = getpts();
     ptIn = [ptX(1) ptY(1)];
     
-    %save the tracked point
+    %save the tracked point as a .mat file
     save([outputFilePath '/' fileNoExt outputFileName '_frame_' sprintf('%06d',ii) '.mat'],'ptIn');
+    %save the tracked point as a .txt file
+    dlmwrite([outputFilePath '/' fileNoExt outputFileName '_frame_' sprintf('%06d',ii) '.txt'],ptIn);
 end
+
+%by default, write the tracked video at the end of the script
+write_tracked_video(1,nbFrames);

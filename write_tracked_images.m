@@ -24,13 +24,14 @@ outputFileName = trackingParameters.outputFileName;
 %first and last frames to write
 firstFrame = 1;
 lastFrame = 20;
+skipFrames = trackingParameters.skipFrames;
 
 %read input video
 vidIn = read_video([inputPath '/' inputFileName]);
 nbFrames = get(vidIn,'NumberOfFrames');
 [~,fileNoExt,~] = fileparts(inputFileName);
 
-for ii=firstFrame:lastFrame
+for ii=firstFrame:skipFrames:lastFrame
     imgIn = read(vidIn,ii);
 
     trackFile = [outputFilePath '/' fileNoExt outputFileName '_frame_' sprintf('%06d',ii) '.mat'];

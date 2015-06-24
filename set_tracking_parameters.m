@@ -16,5 +16,7 @@ trackingParameters.inputFileName = 'Museum_front_resized.mp4';
 trackingParameters.outputFilePath = '/Users/Alasdair/Desktop/Alasdair/Postdoc/Codes/Tracking/Museum/Manual_tracking/test_output';
 %the generic name of the tracking files
 trackingParameters.outputFileName = '_tracking';
+%number of frames you wish to skip in the annotation
+trackingParameters.skipFrames = 15;
 
 save('tracking_parameters.mat','trackingParameters');
