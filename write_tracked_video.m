@@ -49,7 +49,13 @@ function[] = write_tracked_video(varargin)
         end
 
         load(trackFile,'ptIn');
-        imgIn = insertMarker(imgIn, ptIn, 'o', 'Color', 'green','Size', 8);
+        %imgIn = insertMarker(imgIn, ptIn, 'o', 'Color', 'green','Size', 8);
+        
+        imgIn(max(ptIn(2)-markerSize,1):min(ptIn(2)+markerSize,size(imgIn,1)), ...
+        max(ptIn(1)-markerSize,1):min(ptIn(1)+markerSize,size(imgIn,2)),:) = 0;
+        imgIn(max(ptIn(2)-markerSize,1):min(ptIn(2)+markerSize,size(imgIn,1)), ...
+        max(ptIn(1)-markerSize,1):min(ptIn(1)+markerSize,size(imgIn,2)),2) = 255;
+    
         writeVideo(vidOut,uint8(imgIn));
     end
     close(vidOut);

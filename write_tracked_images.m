@@ -25,6 +25,7 @@ outputFileName = trackingParameters.outputFileName;
 firstFrame = 1;
 lastFrame = 20;
 skipFrames = trackingParameters.skipFrames;
+markerSize = 3;
 
 %read input video
 vidIn = read_video([inputPath '/' inputFileName]);
@@ -41,6 +42,11 @@ for ii=firstFrame:skipFrames:lastFrame
     end
 
     load(trackFile,'ptIn');
-    imgIn = insertMarker(imgIn, ptIn, 'o', 'Color', 'green','Size', 8);
+    %imgIn = insertMarker(imgIn, ptIn, 'o', 'Color', 'green','Size', 8);
+    imgIn(max(ptIn(2)-markerSize,1):min(ptIn(2)+markerSize,size(imgIn,1)), ...
+        max(ptIn(1)-markerSize,1):min(ptIn(1)+markerSize,size(imgIn,2)),:) = 0;
+    imgIn(max(ptIn(2)-markerSize,1):min(ptIn(2)+markerSize,size(imgIn,1)), ...
+        max(ptIn(1)-markerSize,1):min(ptIn(1)+markerSize,size(imgIn,2)),2) = 255;
+    
     imwrite(uint8(imgIn),[outputFilePath '/' fileNoExt '_tracked_image_frame_' sprintf('%06d',ii) '.png']);
 end
