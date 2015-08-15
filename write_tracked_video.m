@@ -27,6 +27,7 @@ function[] = write_tracked_video(varargin)
         firstFrame = varargin{1};
         lastFrame = varargin{2};
     end
+    markerSize = 3;
     skipFrames = trackingParameters.skipFrames;
 
     %read input video

@@ -23,7 +23,7 @@ outputFileName = trackingParameters.outputFileName;
 
 %first and last frames to write
 firstFrame = 1;
-lastFrame = 20;
+lastFrame = 70;
 skipFrames = trackingParameters.skipFrames;
 markerSize = 3;
 
@@ -42,6 +42,7 @@ for ii=firstFrame:skipFrames:lastFrame
     end
 
     load(trackFile,'ptIn');
+    ptIn = round(ptIn);
     %imgIn = insertMarker(imgIn, ptIn, 'o', 'Color', 'green','Size', 8);
     imgIn(max(ptIn(2)-markerSize,1):min(ptIn(2)+markerSize,size(imgIn,1)), ...
         max(ptIn(1)-markerSize,1):min(ptIn(1)+markerSize,size(imgIn,2)),:) = 0;
