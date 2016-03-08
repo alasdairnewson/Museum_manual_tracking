@@ -27,7 +27,7 @@ nbFrames = get(vidIn,'NumberOfFrames');
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 firstFrame = 1;
-lastFrame = 70;
+lastFrame = 700;
 skipFrames = trackingParameters.skipFrames;
 
 figure;

@@ -38,10 +38,17 @@ function[coordsOut] = analyse_coordinates(varargin)
     %set up colours
     
     figure;
-    s = 30;
+    s = 6;
     c = linspace(0,1,size(coordsOut,2));
     c = [c' flipud(c') ones(length(c),1)];
-    scatter(coordsOut(1,:),coordsOut(2,:),s,c,'fill');
+    %scatter3(coordsOut(1,:),coordsOut(2,:),(1:size(coordsOut,2)),s,c,'fill','markertype','o');
+    plot3(coordsOut(1,:),coordsOut(2,:),(1:size(coordsOut,2)),'Marker','o','MarkerEdgeColor','red',...
+            'MarkerFaceColor','red','MarkerSize',s,'LineWidth',3);%,'Color',c
+    grid on;
+    xlabel('X');
+    ylabel('Y');
+    zlabel('Time');
+    %,s,c);%,'fill','markertype','o');
     
     coordsOut = coordsOut(1:2,:)';
 end
