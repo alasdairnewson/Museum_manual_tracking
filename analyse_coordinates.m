@@ -37,21 +37,26 @@ function[coordsOut] = analyse_coordinates(varargin)
     
     %set up colours
     
-    figure;
-    s = 6;
-    c = linspace(0,1,size(coordsOut,2));
-    c = [c' flipud(c') ones(length(c),1)];
+% %     figure;
+% %     s = 6;
+% %     c = linspace(0,1,size(coordsOut,2));
+% %     c = [c' flipud(c') ones(length(c),1)];
     %scatter3(coordsOut(1,:),coordsOut(2,:),(1:size(coordsOut,2)),s,c,'fill','markertype','o');
-    plot3(coordsOut(1,:),coordsOut(2,:),(1:size(coordsOut,2)),'Marker','o','MarkerEdgeColor','red',...
-            'MarkerFaceColor','red','MarkerSize',s,'LineWidth',3);%,'Color',c
-    grid on;
-    xlabel('X');
-    ylabel('Y');
-    zlabel('Time');
+% %     plot3(coordsOut(1,:),coordsOut(2,:),(1:size(coordsOut,2)),'Marker','o','MarkerEdgeColor','red',...
+% %             'MarkerFaceColor','red','MarkerSize',s,'LineWidth',3);%,'Color',c
+% %     grid on;
+% %     xlabel('X');
+% %     ylabel('Y');
+% %     zlabel('Time');
     %,s,c);%,'fill','markertype','o');
     
+    %%%%% !!!!!!  %%%%%
+    %%%%  SPEED ANALYIS  %%%
     coordsOut = coordsOut(1:2,:)';
+    
+    figure;
+    plot(1:(size(coordsOut,1)-1),abs(coordsOut(2:end,1)-coordsOut(1:(end-1),1)),'r');
+    hold on;
+    plot(1:(size(coordsOut,1)-1),abs(coordsOut(2:end,2)-coordsOut(1:(end-1),2)),'b');
+    legend('x speed','y speed');
 end
-
-
-
